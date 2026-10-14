@@ -45,6 +45,7 @@ tg bots/.git-backup/
 tg bots/input.jpg
 tg bots/*+watermark.jpg
 web_scrapers/digikey_scrape/browser_profile_digikey/
+web_scrapers/sigma_scraper/logs/
 # Local project configuration files containing secrets
 small projects/config.py
 website monitoring/config.py
