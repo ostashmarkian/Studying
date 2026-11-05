@@ -141,7 +141,7 @@ async def fetch_ids(
     scan cuts off early and silently loses everything below it.
     """
     total = 0
-    async with await psycopg.AsyncConnection.connect(
+    async with psycopg.AsyncConnection.connect(
         **DATABASE_CONNECTION, autocommit=True
     ) as conn:
         for category_id in categories:

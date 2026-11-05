@@ -1,12 +1,16 @@
 from typing import Annotated
 from fastapi import FastAPI, HTTPException, Path, Query, status
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, AfterValidator
  
 app = FastAPI(title="Items API")
- 
+def starts_with_pd(name: str): 
+    if not name.startswith("pd-"):
+        raise ValueError('Invalid name format, ...')
+    return name
+
 
 class ItemCreate(BaseModel):
-    name: str = Field(min_length=1, max_length=100)
+    name: Annotated[str, Field(min_length=3, max_length=100), AfterValidator(starts_with_pd)]
     price: float = Field(gt=0)
     description: str | None = None
     in_stock: bool = True
